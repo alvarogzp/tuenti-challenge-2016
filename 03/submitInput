@@ -1,0 +1,65 @@
+---
+code:
+  start:
+    '#':
+      move: right
+      state: find_hash
+  find_hash:
+    '1':
+      move: right
+    '0':
+      move: right
+    '#':
+      move: left
+      state: rest
+  rest:
+    '0':
+      write: '1'
+      move: left
+    '1':
+      write: '0'
+      move: right
+      state: add_one
+    '#':
+      move: right
+      state: fill_zeroes
+  fill_zeroes:
+    '1':
+      write: '0'
+      move: right
+    '#':
+      move: right
+      state: add_last_hash
+  add_one:
+    '#':
+      move: right
+    '0':
+      move: right
+    '1':
+      move: right
+    ' ':
+      write: '1'
+      move: left
+      state: find_prev_hash
+  find_prev_hash:
+    '1':
+      move: left
+    '#':
+      move: left
+      state: rest
+  add_last_hash:
+    '#':
+      move: right
+    '0':
+      move: right
+    '1':
+      move: right
+    ' ':
+      write: '#'
+      state: end
+tapes:
+  1: '#10#'
+  2: '#0#'
+  3: '#11101#'
+  4: '#10000000000#'
+...

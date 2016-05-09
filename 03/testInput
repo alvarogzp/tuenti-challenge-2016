@@ -1,0 +1,93 @@
+---
+code:
+  start:
+    '#':
+      move: right
+      state: begin_rest
+  begin_rest:
+    '0':
+      move: right
+    '1':
+      move: right
+    '#':
+      move: left
+      state: rest
+  rest:
+    '0':
+      write: '1'
+      move: left
+    '1':
+      write: '0'
+      move: right
+      state: find_sum
+    '#':
+      move: right
+      state: fill_zeroes
+  fill_zeroes:
+    '1':
+      write: '0'
+      move: right
+    '#':
+      write: '0'
+      move: right
+      state: end
+  find_sum:
+    '0':
+      move: right
+    '1':
+      move: right
+    '#':
+      move: right
+      state: begin_sum
+  begin_sum:
+    '0':
+      move: right
+    '1':
+      move: right
+    '#':
+      move: left
+      state: sum
+  sum:
+    '0':
+      write: '1'
+      move: left
+      state: back_to_rest
+    '1':
+      write: '0'
+      move: left
+      state: sum
+    '#':
+      move: right
+      state: sum_add_first_digit
+  sum_add_first_digit:
+    '0':
+      write: '1'
+      move: right
+      state: sum_add_rest_digits
+  sum_add_rest_digits:
+    '0':
+      move: right
+    '#':
+      write: '0'
+      move: right
+      state: sum_add_hash
+  sum_add_hash:
+    ' ':
+      write: '#'
+      move: left
+      state: back_to_rest
+  back_to_rest:
+    '0':
+      move: left
+    '1':
+      move: left
+    '#':
+      move: left
+      state: rest
+tapes:
+  1: '#1#1#'
+  2: '#01010#00010#'
+  3: '#100#10#'
+  4: '#0#0#'
+  5: '#11111111#11111111#'
+...
