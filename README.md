@@ -1,2 +1,1 @@
-# tuenti-challenge-2016
-Tuenti Challenge 6 own solutions
+[Tuenti Challenge](https://contest.tuenti.net/) 6 (2016) own solutions
